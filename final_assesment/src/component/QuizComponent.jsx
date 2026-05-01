@@ -13,13 +13,13 @@ export default function QuizComponent() {
         if (isAnswered) return;
         setSelectedOption(index);
         setIsAnswered(true);
-    
-        if (index === currentQuestion.answer - 1 ) {
-          setScore(score + 1);
-        }
       };
     
       const handleNextQuestion = () => {
+        if (selectedOption === currentQuestion.answer - 1) {
+          setScore(prevScore => prevScore + 1);
+        }
+
         if (currentQuestionIndex < QUESTIONS.length - 1) {
           setCurrentQuestionIndex(currentQuestionIndex + 1);
           setSelectedOption(null);
